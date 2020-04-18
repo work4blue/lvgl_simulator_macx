@@ -67,7 +67,64 @@ LIBS += -L$$PWD/SDL2/lib/   -lSDL2 -framework IOKit -framework CoreAudio -framew
 
 
 ### 最终运行效果
+![image.png](https://upload-images.jianshu.io/upload_images/1493747-f1b336d8ca963f1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![screenshot](./docs/screenshot.png)
+
+### 多个例子
+在main.c 实例有多个例子的入口，只是被注释掉。
+因此加入一些宏进行调整
+
+```c
+int main(int argc, char ** argv)
+{
+    (void) argc;    /*Unused*/
+    (void) argv;    /*Unused*/
+
+    /*Initialize LittlevGL*/
+    lv_init();
+
+    /*Initialize the HAL (display, input devices, tick) for LittlevGL*/
+    hal_init();
+
+#ifdef LV_TEST_BASIC
+    /*Create a demo*/
+    demo_create();
+#endif
+
+#ifdef LV_TEST_BENCHMARK
+    /*Try the benchmark to see how fast your GUI is*/
+       benchmark_create();
+#endif
+    /*Check the themes too*/
+#ifdef LV_TEST_THEME_1
+        lv_test_theme_1(lv_theme_night_init(15, NULL));
+#endif
+
+#ifdef LV_TEST_THEME_2
+        lv_test_theme_2();
+#endif
+    /*Try the touchpad-less navigation (use the Tab and Arrow keys or the Mousewheel)*/
+
+#ifdef LV_TEST_GROUP
+      lv_test_group_1();
+#endif
+
+```
+
+pro 里打开相应宏来运行
+```
+DEFINES += LV_USE_DEMO LV_TEST_THEME_1
+#LV_TEST_BASIC LV_TEST_THEME_2 LV_TEST_GROUP
+```
+
+LV_TEST_THEME1 第一个主题样式例子
+![image.png](https://upload-images.jianshu.io/upload_images/1493747-501c9aaa050b8e13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+LV_TEST_THEME2 第二主题样式例子
+![image.png](https://upload-images.jianshu.io/upload_images/1493747-0f10226a133f9ac9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+LV_TEST_BENCHMARK
+![image.png](https://upload-images.jianshu.io/upload_images/1493747-829fe53150675389.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 https://www.jianshu.com/p/e8abdd684d85
