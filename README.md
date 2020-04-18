@@ -68,6 +68,6 @@ LIBS += -L$$PWD/SDL2/lib/   -lSDL2 -framework IOKit -framework CoreAudio -framew
 
 ### 最终运行效果
 
-![screenshot](docs/screenshot.png)
+![screenshot](./docs/screenshot.png)
 
 https://www.jianshu.com/p/e8abdd684d85
