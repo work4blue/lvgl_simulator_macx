@@ -43,7 +43,11 @@ HEADERS += \
     lv_drivers/win_drv.h \
     lv_drv_conf.h \
     lv_ex_conf.h \
+    lv_examples/lv_apps/benchmark/benchmark.h \
     lv_examples/lv_apps/demo/demo.h \
+    lv_examples/lv_tests/lv_test_group/lv_test_group.h \
+    lv_examples/lv_tests/lv_test_theme/lv_test_theme_1.h \
+    lv_examples/lv_tests/lv_test_theme/lv_test_theme_2.h \
     lvgl/lvgl.h \
     lvgl/lvgl/lv_conf_checker.h \
     lvgl/lvgl/lv_core/lv_debug.h \
@@ -149,8 +153,12 @@ SOURCES += \
     lv_drivers/indev/mouse.c \
     lv_drivers/indev/mousewheel.c \
     lv_drivers/win_drv.c \
+    lv_examples/lv_apps/benchmark/benchmark.c \
+    lv_examples/lv_apps/benchmark/benchmark_bg.c \
     lv_examples/lv_apps/demo/demo.c \
     lv_examples/lv_apps/demo/img_bubble_pattern.c \
+    lv_examples/lv_tests/lv_test_theme/lv_test_theme_1.c \
+    lv_examples/lv_tests/lv_test_theme/lv_test_theme_2.c \
     lvgl/lvgl/lv_core/lv_debug.c \
     lvgl/lvgl/lv_core/lv_disp.c \
     lvgl/lvgl/lv_core/lv_group.c \
@@ -246,7 +254,8 @@ SOURCES += \
 INCLUDEPATH += $$PWD/lvgl $$PWD/SDL2
 DEPENDPATH += $$PWD/SDL2
 
-DEFINES += LV_USE_DEMO
+DEFINES += LV_USE_DEMO LV_TEST_BENCHMARK
+#LV_TEST_BASIC LV_TEST_THEME_1 LV_TEST_THEME_2 LV_TEST_GROUP LV_TEST_BENCHMARK
 
 LIBS += -L$$PWD/SDL2/lib/   -lSDL2 -framework IOKit -framework CoreAudio -framework  CoreVideo -framework AudioToolbox \
   -framework AudioUnit -framework Carbon -framework Cocoa -framework CoreFoundation -framework ForceFeedback \

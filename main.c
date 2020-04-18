@@ -67,19 +67,29 @@ int main(int argc, char ** argv)
     /*Initialize the HAL (display, input devices, tick) for LittlevGL*/
     hal_init();
 
+#ifdef LV_TEST_BASIC
     /*Create a demo*/
     demo_create();
+#endif
 
+#ifdef LV_TEST_BENCHMARK
     /*Try the benchmark to see how fast your GUI is*/
-    //    benchmark_create();
 
+    benchmark_create();
+#endif
     /*Check the themes too*/
-    //    lv_test_theme_1(lv_theme_night_init(15, NULL));
+#ifdef LV_TEST_THEME_1
+        lv_test_theme_1(lv_theme_night_init(15, NULL));
+#endif
 
-    //    lv_test_theme_2();
+#ifdef LV_TEST_THEME_2
+        lv_test_theme_2();
+#endif
     /*Try the touchpad-less navigation (use the Tab and Arrow keys or the Mousewheel)*/
-    //    lv_test_group_1();
 
+#ifdef LV_TEST_GROUP
+      lv_test_group_1();
+#endif
 
     while(1) {
         /* Periodically call the lv_task handler.
